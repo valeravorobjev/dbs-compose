@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+    db:
+        image: mysql
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+        volumes:
+            - /Users/valerijvorobev/gitother/mysql-compose/data:/var/lib/mysql
+            - /Users/valerijvorobev/gitother/mysql-compose/docker-entrypoint-initdb.d/sakila-schema.sql:/docker-entrypoint-initdb.d/script1.sql
+            - /Users/valerijvorobev/gitother/mysql-compose/docker-entrypoint-initdb.d/sakila-data.sql:/docker-entrypoint-initdb.d/script2.sql
+        ports:
+            - 3306:3306
